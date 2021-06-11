@@ -1,0 +1,13 @@
+<header>
+    <u>
+        <b>Clone Quora</b> 
+    </u>|
+    <% if(locals.user){ %>
+        <%= locals.user.fname + locals.user.lname %>|
+        <a href="/user/signout">Sign Out</a>
+    <% }
+    else{ %>
+        <a href="/user/signup">SignUp</a>
+        <a href="/">Login</a>
+    <%}%>
+</header>
