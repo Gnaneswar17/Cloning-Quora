@@ -29,7 +29,17 @@ const userSchema = new mongoose.Schema({
     is_verified : {
         type : String,
         required : Boolean
-    }
+    },
+    is_selected:{
+        type : String,
+        required : true
+    },
+    topics : [
+        {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : "Topic"
+        }
+    ]
 },{ timestamps : true });
 
 

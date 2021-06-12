@@ -1,0 +1,12 @@
+<h3>Select the topics you are interested in ......</h3>
+<form action="/dashboard/addTopics" method="POST">
+    <% for(var i of topicList){
+        for(var j of i){ %>
+            <input type="checkbox"  name=<%= j %> value=<%= j %>>
+            <label for=<%= j %>> <%= j %> </label>
+        <% } %>
+        <br><br>
+    <% } %>
+    
+    <input type="submit" value="Submit">
+</form>

@@ -28,7 +28,8 @@ module.exports.register = async function(req,res){
             gender : req.body.gender,
             email : req.body.email,
             password : req.body.password,
-            is_verified : false
+            is_verified : false,
+            is_selected : false
         });
         var otp1 = await Otp.create({
             user : user._id,

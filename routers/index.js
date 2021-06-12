@@ -6,5 +6,6 @@ router.get('/',user_controllers.login);
 
 router.use('/user',require('./user'));
 router.use('/dashboard',require('./dashboard'));
+router.use('/admin',require('./admin'));
 
 module.exports = router;
