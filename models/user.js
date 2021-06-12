@@ -25,6 +25,10 @@ const userSchema = new mongoose.Schema({
     DOB : {
         type : Date,
         required : true
+    },
+    is_verified : {
+        type : String,
+        required : Boolean
     }
 },{ timestamps : true });
 
