@@ -63,10 +63,8 @@ module.exports.verifyEmail = async function(req,res){
 module.exports.validateOtp = async function(req,res){
     let otp_obj = await Otp.findOne({user:req.user.id});
     if(req.body.otp == otp_obj.otp){
-        console.log("OTP verified succeffuly");
 
         let user_obj = await User.findById(req.user.id);
-        console.log(user_obj);
         user_obj.is_verified = true;
         user_obj.save();
 

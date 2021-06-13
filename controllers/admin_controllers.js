@@ -1,5 +1,4 @@
 const Topic = require("../models/topic");
-const topList = require('../data_files/topics');
 
 
 module.exports.topicForm = async function(req,res){

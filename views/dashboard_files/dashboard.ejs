@@ -1,1 +1,14 @@
-This my dashboard boss
+<% for(var i in user_obj){ %>
+    <h3>
+        <a href="#">
+            <%= user_obj[i][0].question %>
+        </a>
+    </h3>
+
+    <b>
+        <%= user_obj[i][1].fname +" "+ user_obj[i][1].lname %>
+    </b>
+    <br><br>
+    Likes | Dislikes | Comments
+
+<% } %>
