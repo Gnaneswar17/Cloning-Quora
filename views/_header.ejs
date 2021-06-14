@@ -4,10 +4,13 @@
     </u>|
     <% if(locals.user){ %>
         <%= locals.user.fname + locals.user.lname %>|
-        <a href="/dashboard">Home</a> |
+        <% if(locals.user.is_verified=="true"){ %>
+            <a href="/dashboard">Home</a> |
+            <a href="/dashboard/profile">My Profile</a> |
+            <a href="/question/questionForm">Add Question</a> |
+        <% } %>
+
         <a href="/user/signout">Sign Out</a> |
-        <a href="/dashboard/profile">My Profile</a> |
-        <a href="/question/questionForm">Add Question</a> |
     <% }
     else{ %>
         <a href="/user/signup">SignUp</a>

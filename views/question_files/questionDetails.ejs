@@ -1,0 +1,29 @@
+<h2>
+    <%= question_obj.question %>
+</h2>
+Username:
+<b><%= question_obj.user.fname +" "+question_obj.user.lname %></b>
+<br><br>
+<a href="/question/addLikes/?question_id=<%= question_obj.id %>">Likes :
+    <%= question_obj.likes.length %>
+</a>
+|
+<a href="/question/addDislikes/?question_id=<%= question_obj.id %>">Dislikes :
+    <%= question_obj.dislikes.length %>
+</a> <br><br>
+
+<u><b>Comments</b></u>
+<form action="/question/comment/addComment/?question_id=<%= question_obj.id %>" method="POST">
+    <textarea name="comment" cols="60" rows="5" placeholder="Add Your Comment Here ..."></textarea>
+    <input type="submit" value="Add Comment">
+</form>
+<% for(var i of question_obj.comments){ %>
+    <%= i.comment %>
+    <% if(i.user.id == locals.user.id){ %>
+        <b>You</b>
+    <% }
+    else{ %>
+        <b><%= i.user.fname + " "+i.user.lname %></b> 
+    <% } %>
+    <br><br>
+<% } %>

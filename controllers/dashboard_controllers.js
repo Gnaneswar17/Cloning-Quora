@@ -5,47 +5,55 @@ const Question = require('../models/question');
 const otherFunctions = require('../Other_Functions/dashboard_questions');
 
 module.exports.MyDashboard = async function(req,res){
-    if(req.user.is_verified == 'false'){
-        var x = false;
-    }
-    else{
-        var x = true;
-    }
-    if(x){
-        
-        if(req.user.is_selected == 'false'){
-            var y = false;
+    try{
+        if(req.user.is_verified == 'false'){
+            var x = false;
         }
         else{
-            var y = true;
+            var x = true;
         }
-        if(y){
-            let user_obj = await User.findById(req.user.id);
-            var result = [];
-            for(var i of user_obj.topics){
-                var topic_obj = await Topic.findById(i);
-                for(var j of topic_obj.questions){
-                    var question_obj = await Question.findById(j);
-                    var user_obj1 = await User.findById(question_obj.user);
-                    if((question_obj.id in result) || (req.user.id == user_obj1.id)){
-                        continue;
-                    }
-                    result[question_obj.id] = [question_obj,user_obj1]; 
-                }
+        if(x){
+            
+            if(req.user.is_selected == 'false'){
+                var y = false;
             }
-            console.log(result);
-            return res.render("dashboard_files/dashboard",{
-                title : 'MyDashboard',
-                user_obj : result
-            });
+            else{
+                var y = true;
+            }
+            if(y){
+                let user_obj = await User.findById(req.user.id);
+                var result = [];
+                for(var i of user_obj.topics){
+                    var topic_obj = await Topic.findById(i);
+                    for(var j of topic_obj.questions){
+                        var question_obj = await Question.findById(j);
+                        if(question_obj == null){
+                            continue;
+                        }
+                        var user_obj1 = await User.findById(question_obj.user);
+                        if((question_obj.id in result) || (req.user.id == user_obj1.id)){
+                            continue;
+                        }
+                        result[question_obj.id] = [question_obj,user_obj1]; 
+                    }
+                }
+                return res.render("dashboard_files/dashboard",{
+                    title : 'MyDashboard',
+                    user_obj : result
+                });
+            }
+            else{
+                return res.redirect('/dashboard/SelectTopics');
+            }
         }
         else{
-            return res.redirect('/dashboard/SelectTopics');
+            sendEmail.sendEmail(req.user);
+            return res.redirect('/user/verifyEmail');
         }
     }
-    else{
-        sendEmail.sendEmail(req.user);
-        return res.redirect('/user/verifyEmail');
+    catch(err){
+        console.log("<-----------------Error Occured------------------->",err);
+        return res.end("Error Occured");
     }
 }
 
@@ -54,7 +62,6 @@ module.exports.SelectTopics = async function(req,res){
         return res.redirect('/dashboard');
     }
     let topList = await Topic.find({});
-    
     return res.render('dashboard_files/SelectTopics',{
         title : "Select Topics",
         topicList : topList

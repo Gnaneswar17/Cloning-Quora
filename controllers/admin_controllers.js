@@ -8,8 +8,13 @@ module.exports.topicForm = async function(req,res){
 }
 module.exports.addTopic = async function(req,res){
     
-    const topic = await Topic.create({
-        name : req.body.topic
-    });
-    return res.redirect("back");
+    try{
+        const topic = await Topic.create({
+            name : req.body.topic
+        });
+        return res.redirect("back");
+    }
+    catch(err){
+        return res.end("Error Occured");
+    }
 }

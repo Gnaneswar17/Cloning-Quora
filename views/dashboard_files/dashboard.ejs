@@ -1,6 +1,6 @@
 <% for(var i in user_obj){ %>
     <h3>
-        <a href="#">
+        <a href="/question/questionDetails/?qid=<%= user_obj[i][0].id %>">
             <%= user_obj[i][0].question %>
         </a>
     </h3>
@@ -9,6 +9,8 @@
         <%= user_obj[i][1].fname +" "+ user_obj[i][1].lname %>
     </b>
     <br><br>
-    Likes | Dislikes | Comments
+    Likes - <%= user_obj[i][0].likes.length %> | 
+    Dislikes - <%= user_obj[i][0].dislikes.length %> | 
+    Comments - <%= user_obj[i][0].comments.length %>
 
 <% } %>
