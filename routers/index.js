@@ -8,5 +8,6 @@ router.use('/user',require('./user'));
 router.use('/dashboard',require('./dashboard'));
 router.use('/admin',require('./admin'));
 router.use('/question',require('./question'));
+router.use('/search',require('./search'));
 
 module.exports = router;

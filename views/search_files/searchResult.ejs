@@ -1,0 +1,24 @@
+Search Results for : <b><%= searchQ %></b>
+
+
+<% for(var i of question_list){ %>
+    <h3>
+        <a href="/question/questionDetails/?qid=<%= i.id %>">
+            <%= i.question %>
+        </a>
+    </h3>
+
+    <b>
+        <% if(locals.user.id == i.user.id){ %>
+            You
+        <% } 
+        else{ %>
+            <%= i.user.fname +" "+ i.user.lname %>
+        <% } %>
+    </b>
+    <br><br>
+    Likes - <%= i.likes.length %> | 
+    Dislikes - <%= i.dislikes.length %> | 
+    Comments - <%= i.comments.length %>
+
+<% } %>

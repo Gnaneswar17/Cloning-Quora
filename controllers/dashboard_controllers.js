@@ -2,7 +2,6 @@ const sendEmail = require('../config/send-email');
 const User = require('../models/user');
 const Topic = require('../models/topic');
 const Question = require('../models/question');
-const otherFunctions = require('../Other_Functions/dashboard_questions');
 
 module.exports.MyDashboard = async function(req,res){
     try{
