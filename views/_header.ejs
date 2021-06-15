@@ -12,6 +12,9 @@
                 <input type="text" name="search" placeholder="search" size="35">
                 <button><i class="fa fa-search"></i></button>
             </form>
+            <% if(locals.user && locals.user.email =="bhargavponduri@gmail.com"){%>
+                <a href="/admin/topicForm">Add Topic</a> |
+            <%}%>
         <% } %>
 
         <a href="/user/signout">Sign Out</a> |

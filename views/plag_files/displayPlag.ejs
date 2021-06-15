@@ -1,0 +1,23 @@
+<% for(var i of comment_obj){ %>
+    <b>
+        Copied Comment : <%= i[0].comment %> <br>
+    </b>
+    Username : <b>
+        <%= i[0].user.fname + ' ' + i[0].user.lname %> <br>
+    </b><br>
+    <b>
+        Copied From : 
+    </b><br>
+    <ol>
+        <% for(var j of i[1]){ %>
+            <li>
+                Comment : <%= j[0].comment %> <br>
+                Username : <%= j[0].user.fname + ' ' + j[0].user.lname %> <br>
+                Similarity Percentage : 
+                <span style="color: rgb(255, 0, 0);"><%= j[1] %></span>
+            </li>
+        <% } %>
+    </ol>
+    <hr>
+
+<% } %>

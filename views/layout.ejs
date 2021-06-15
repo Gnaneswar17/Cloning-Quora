@@ -6,9 +6,29 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
-        <%- include('_header'); %>
-        <br>
-        <%- body %>
-        <%- include('_footer'); %>
+        <% if(locals.user){ %>
+            <span style="position: absolute;left : 10%">
+                <%- include('_header'); %>
+            </span>
+            <span style="position: absolute;top:10%;left : 20%;right : 20%;
+            border-left: 0.25px solid rgb(153, 151, 151);padding-left: 20px;
+            border-right: 0.25px solid rgb(153, 151, 151);padding-right: 20px;">
+                <%- body %>
+            </span>
+            <span style="position: absolute;top: 10%;">
+                <%- include('_left');  %>
+            </span>
+            <span style="position: absolute;top: 10%;left : 80%;padding-left: 20px;">
+                <%- include('_right');  %> 
+            </span>
+            <span style="position: absolute;top: 90%;left : 30%;">
+                <%- include('_footer'); %>
+            </span>
+        <% } 
+        else{ %>
+            <%- include('_header'); %> <br>
+            <%- body %>
+            <%- include('_footer'); %>
+        <% } %>
     </body>
 </html>

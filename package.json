@@ -21,6 +21,7 @@
     "nodemailer": "^6.6.1",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+    "stopword": "^1.0.7",
     "string-similarity": "^4.0.4"
   }
 }

@@ -1,6 +1,12 @@
 <h2>
     <%= question_obj.question %>
 </h2>
+
+<% if(locals.user.id == question_obj.user.id){ %>
+    <a href="/plag/checkPlag/?question_id=<%= question_obj.id %>">Check Plagiarism</a>
+    <br><br>
+<% } %> 
+
 Username:
 <b><%= question_obj.user.fname +" "+question_obj.user.lname %></b>
 <br><br>
