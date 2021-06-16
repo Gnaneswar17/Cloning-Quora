@@ -2,6 +2,7 @@ const sendEmail = require('../config/send-email');
 const User = require('../models/user');
 const Topic = require('../models/topic');
 const Question = require('../models/question');
+const helpingFun = require('../Other_Functions/Helping_Functions/dashboard');
 
 module.exports.MyDashboard = async function(req,res){
     try{
@@ -21,7 +22,7 @@ module.exports.MyDashboard = async function(req,res){
             }
             if(y){
                 let user_obj = await User.findById(req.user.id);
-                var result = [];
+                var result = {};
                 for(var i of user_obj.topics){
                     var topic_obj = await Topic.findById(i);
                     for(var j of topic_obj.questions){
@@ -36,9 +37,20 @@ module.exports.MyDashboard = async function(req,res){
                         result[question_obj.id] = [question_obj,user_obj1]; 
                     }
                 }
+
+                var following_users = user_obj.following;
+                var AllQuestions = await Question.find({});
+                for(var i of AllQuestions){
+                    if(following_users.includes(i.user)){
+                        let user1 = await User.findById(i.user);
+                        result[i.id] = [i,user1];
+                    }
+                }
+
+                var result = helpingFun.sortQuestions(result);
                 return res.render("dashboard_files/dashboard",{
                     title : 'MyDashboard',
-                    user_obj : result
+                    ques_obj : result
                 });
             }
             else{
@@ -92,6 +104,12 @@ module.exports.DisplayProfile = function(req,res){
 module.exports.following = function(req,res){
     User.findById(req.user.id)
     .populate('topics')
+    .populate({
+        path : 'following',
+        populate : {
+            path : 'user'
+        }
+    })
     .exec(function(err,user){
         return res.render('dashboard_files/following',{
             title : 'Following',

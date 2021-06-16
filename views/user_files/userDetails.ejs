@@ -1,0 +1,47 @@
+Username : 
+<b>
+    <%= user_obj.fname + ' ' +user_obj.lname %>
+</b>
+
+<br><br>
+
+DOB :
+<b>
+    <%= user_obj.DOB.getDate() %> /
+    <%= user_obj.DOB.getMonth() + 1 %> /
+    <%= user_obj.DOB.getFullYear() %>
+</b>
+
+<br><br>
+
+Gender : 
+<b>
+    <%= user_obj.gender[0].toUpperCase() + user_obj.gender.slice(1) %>
+</b>
+
+<br><br>
+
+<a href="/follow/showFollowers/?user_id=<%= user_obj.id %>">
+    Followers
+    (<%= user_obj.followers.length %>)
+</a>
+
+<br><br>
+
+<a href="/follow/showFollowing/?user_id=<%= user_obj.id %>">
+    Following
+    (<%= user_obj.following.length %>)
+</a>
+
+
+<br><br>
+<% if(user_obj.followers.includes(locals.user.id)){ %>
+    <a href="/follow/UnFollowUser/?user_id=<%= user_obj.id %>">
+        Unfollow <%= user_obj.fname + ' ' + user_obj.lname %>
+    </a>
+<% }
+else{ %>
+    <a href="/follow/followUser/?user_id=<%= user_obj.id %>">
+        Follow <%= user_obj.fname + ' ' + user_obj.lname %>
+    </a>
+<% } %>

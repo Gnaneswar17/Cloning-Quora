@@ -1,16 +1,18 @@
-<% for(var i in user_obj){ %>
+<% for(var i of ques_obj){ %>
     <h3>
-        <a href="/question/questionDetails/?qid=<%= user_obj[i][0].id %>">
-            <%= user_obj[i][0].question %>
+        <a href="/question/questionDetails/?qid=<%= i[0].id %>">
+            <%= i[0].question %>
         </a>
     </h3>
 
-    <b>
-        <%= user_obj[i][1].fname +" "+ user_obj[i][1].lname %>
-    </b>
+    <b>Posted by : </b>
+    <a href="/user/userDetails/?user_id=<%= i[1].id %>">
+        <%= i[1].fname +" "+ i[1].lname %>
+    </a>
+
     <br><br>
-    Likes - <%= user_obj[i][0].likes.length %> | 
-    Dislikes - <%= user_obj[i][0].dislikes.length %> | 
-    Comments - <%= user_obj[i][0].comments.length %>
+    Likes - <%= i[0].likes.length %> | 
+    Dislikes - <%= i[0].dislikes.length %> | 
+    Comments - <%= i[0].comments.length %>
 
 <% } %>

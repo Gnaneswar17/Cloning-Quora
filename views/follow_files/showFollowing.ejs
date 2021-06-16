@@ -1,0 +1,14 @@
+<u><h3>Following :</h3></u>
+<% for(var i of user_obj.following){ %>
+    <% if(i.id == locals.user.id){ %>
+        <a href="/dashboard/profile">
+            <%= i.fname + ' ' + i.lname; %>
+        </a>
+    <% }
+    else{ %>
+        <a href="/user/userDetails/?user_id=<%= i.id %>">
+            <%= i.fname + ' ' + i.lname; %>
+        </a>
+    <% } %>
+    <br><br>
+<% } %>

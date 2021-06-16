@@ -8,7 +8,10 @@
 <% } %> 
 
 Username:
-<b><%= question_obj.user.fname +" "+question_obj.user.lname %></b>
+<a href="/user/userDetails/?user_id=<%= question_obj.user.id %>">
+    <%= question_obj.user.fname +" "+question_obj.user.lname %>
+</a>
+
 <br><br>
 <a href="/question/addLikes/?question_id=<%= question_obj.id %>">Likes :
     <%= question_obj.likes.length %>
@@ -26,10 +29,13 @@ Username:
 <% for(var i of question_obj.comments){ %>
     <%= i.comment %>
     <% if(i.user.id == locals.user.id){ %>
-        <b>You</b>
+        <a href="/user/userDetails/?user_id=<%= locals.user.id %>">
+        You</a>
     <% }
     else{ %>
-        <b><%= i.user.fname + " "+i.user.lname %></b> 
+        <a href="/user/userDetails/?user_id=<%= i.user.id %>">
+            <%= i.user.fname + " "+i.user.lname %>
+        </a>
     <% } %>
     <br><br>
 <% } %>

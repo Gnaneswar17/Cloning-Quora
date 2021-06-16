@@ -1,0 +1,10 @@
+<% for(var i of comments){ %>
+    <h3>
+        <a href="/question/questionDetails/?qid=<%= i.question.id %>">
+            <%= i.question.question %>
+        </a>
+    </h3>
+    <b>Your Response : </b>
+    <%= i.comment  %>
+    <br>
+<% } %>

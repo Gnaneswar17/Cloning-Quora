@@ -79,3 +79,16 @@ module.exports.validateOtp = async function(req,res){
         return res.redirect('back');
     }
 }
+
+
+module.exports.userDetails = function(req,res){
+    if(req.query.user_id == req.user.id){
+        return res.redirect('/dashboard/profile');
+    }
+    User.findById(req.query.user_id,function(err,user){
+        return res.render('user_files/userDetails',{
+            title : 'User Details',
+            user_obj : user
+        });
+    });
+}

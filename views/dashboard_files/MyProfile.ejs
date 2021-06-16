@@ -1,17 +1,24 @@
-<b>username :</b> 
-<%= locals.user.fname +" "+locals.user.lname %> <br><br>
+Username :
+<b>
+    <%= locals.user.fname +" "+locals.user.lname %> <br><br>
+</b>
 
-<b>DOB :</b> 
-<%= locals.user.DOB.getDate() %> /
-<%= locals.user.DOB.getMonth()+1 %> /
-<%= locals.user.DOB.getYear() %> <br><br>
+DOB :
+<b>
+    <%= locals.user.DOB.getDate() %> /
+    <%= locals.user.DOB.getMonth()+1 %> /
+    <%= locals.user.DOB.getFullYear() %> 
+</b>
+<br><br>
 
-<b>Gender :</b> 
-<%= locals.user.gender %> <br><br>
+Gender :
+<b>
+    <%= locals.user.gender[0].toUpperCase() + locals.user.gender.slice(1) %> <br><br>
+</b>
+
 
 <a href="/question/MyQuestions">My Questions</a> <br><br>
-<a href="#">Followers</a> <br><br>
-<a href="/dashboard/following">Following</a> <br><br>
-<a href="#">My Responses</a> <br><br>
-<a href="#">Messages</a> <br><br>
-<a href="#">Settings</a> 
+<a href="/follow/showFollowers/?user_id=<%= locals.user.id %>">Followers(<%= locals.user.followers.length %>)</a> <br><br>
+<a href="/dashboard/following">Following(<%= locals.user.following.length %>)</a> <br><br>
+<a href="/question/comment/MyComments">My Responses</a> <br><br>
+

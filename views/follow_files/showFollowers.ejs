@@ -1,0 +1,7 @@
+<u><h3>Followers :</h3></u>
+<% for(var i of user_obj.followers){ %>
+    <a href="/user/userDetails/?user_id=<%= i.id %>">
+        <%= i.fname + ' ' + i.lname; %>
+    </a>
+    <br><br>
+<% } %>
