@@ -2,6 +2,7 @@ const sendEmail = require('../config/send-email');
 const User = require('../models/user');
 const Topic = require('../models/topic');
 const Question = require('../models/question');
+const Space = require('../models/space');
 const helpingFun = require('../Other_Functions/Helping_Functions/dashboard');
 
 module.exports.MyDashboard = async function(req,res){
@@ -47,7 +48,23 @@ module.exports.MyDashboard = async function(req,res){
                     }
                 }
 
+                var all_spaces = await Space.find({})
+                .populate({
+                    path : 'questions',
+                    populate : {
+                        path : 'user'
+                    }
+                });
+                for(var space of all_spaces){
+                    if(space.followers.includes(req.user.id)){
+                        for(var question of space.questions){
+                            result[question.id] = [question,question.user];
+                        }
+                    }
+                }
+
                 var result = helpingFun.sortQuestions(result);
+
                 return res.render("dashboard_files/dashboard",{
                     title : 'MyDashboard',
                     ques_obj : result

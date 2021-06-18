@@ -3,7 +3,7 @@
 <% for(var i of user_list.following){ %>
     <a href="/user/userDetails/?user_id=<%= i.id %>">
         <%= i.fname +' '+ i.lname %>
-    </a>
+    </a> <br><br>
 <% } %>
 
 <h3><u>Topics</u></h3>

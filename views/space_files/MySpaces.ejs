@@ -1,0 +1,8 @@
+<h3><%= title %></h3>
+
+<% for(var i of MySpaces){ %>
+    <a href="/space/spaceDetails/?space_id=<%= i.id %>">
+        <%= i.name %>
+    </a>
+    <br><br>
+<% } %>

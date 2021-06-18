@@ -1,0 +1,8 @@
+<form action="/space/addQuestion" method="POST">
+    <label for="question">Question : </label>
+    <textarea name="question" cols="50" rows="5" placeholder="Add Your Question..."></textarea> 
+    
+    <br><br>
+    <input type="hidden" name='space_id' value = <%= space_id %> >
+    <input type="submit">
+</form>

@@ -1,0 +1,51 @@
+Space Name : <b><%= space_obj.name %></b>
+<br><br>
+
+Description: <b><%= space_obj.desc  %></b>
+
+<br><br>
+
+Admin : <b><%= space_obj.admin.fname +' '+ space_obj.admin.lname %></b>
+
+<br><br>
+
+<a href="/space/followers/?space_id=<%= space_obj.id %>">Followers : <%= space_obj.followers.length %></a>
+
+<br><br>
+ 
+<% if(space_obj.admin.id != locals.user.id){ %>
+    <% if(space_obj.followers.includes(locals.user.id)){ %>
+        <a href="/space/UnfollowSpace/?space_id=<%= space_obj.id %>">UnFollow <%= space_obj.name %></a>
+        <br><br>
+    <% }
+    else{ %>
+        <a href="/space/followSpace/?space_id=<%= space_obj.id %>">Follow <%= space_obj.name %></a>
+    <% } %>
+    
+<% }  %>
+
+<% if( (space_obj.admin.id==locals.user.id) || 
+(space_obj.admin.id!=locals.user.id && space_obj.followers.includes(locals.user.id))){ %>
+    <a href="/space/questionForm/?space_id=<%= space_obj.id %>">Add Question</a>
+<% } %> 
+
+<br><br><hr>
+<h3>Questions :</h3>
+
+<% for(var i of space_obj.questions){ %>
+    <h3>
+        <a href="/question/questionDetails/?qid=<%= i.id %>">
+            <%= i.question %>
+        </a>
+    </h3>
+
+    <b>Posted by : </b>
+    <a href="/user/userDetails/?user_id=<%= i.user.id %>">
+        <%= i.user.fname +" "+ i.user.lname %>
+    </a>
+
+    <br><br>
+    Likes - <%= i.likes.length %> | 
+    Dislikes - <%= i.dislikes.length %> | 
+    Comments - <%= i.comments.length %>
+<% } %>
