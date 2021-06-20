@@ -43,11 +43,13 @@ module.exports.register = async function(req,res){
 }
 
 module.exports.createSession = function(req,res){
-        return res.redirect('/dashboard');
+    req.flash('success','Logged in Successfully');
+    return res.redirect('/dashboard');
 }
 
 module.exports.destroySession = function(req,res){
     req.logout();
+    req.flash('success','logged out successfully');
     return res.redirect('/');
 }
 

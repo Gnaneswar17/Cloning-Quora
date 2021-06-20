@@ -32,7 +32,7 @@ module.exports.addQuestion = async function(req,res){
             }
         }
         question_obj.save();
-
+        req.flash('success','Question created successfully');
         return res.redirect("/dashboard");
     }
     catch(err){

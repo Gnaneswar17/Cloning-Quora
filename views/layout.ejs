@@ -2,8 +2,9 @@
     <head>
         <title>
             <%= title  %>
-        </title>    
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        </title>
+        <%- include('../static_files/css/styleLinks'); %>
+        <%- include('../static_files/javascript/scriptLinks'); %>
     </head>
     <body>
         <% if(locals.user && locals.user.is_selected=='true' && locals.user.is_verified=='true'){ %>
@@ -30,5 +31,25 @@
             <%- body %>
             <%- include('_footer'); %>
         <% } %>
+        
+        <script>
+            <% if(flash.success && flash.success.length>0){ %>
+                new Noty({
+                theme : 'relax',
+                text : '<%= flash.success  %>',
+                timeout : 3000,
+                type : 'success'
+            }).show();
+            <% } %>
+
+            <% if(flash.error && flash.error.length>0){ %>
+                new Noty({
+                theme : 'relax',
+                text : '<%= flash.error  %>',
+                timeout : 3000,
+                type : 'error'
+            }).show();
+            <% } %>
+        </script>
     </body>
 </html>

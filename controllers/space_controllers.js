@@ -16,7 +16,8 @@ module.exports.createSpace = function(req,res){
         admin : req.user.id,
         desc : req.body.desc
     },
-    function(err,user){
+    function(err,space){
+        req.flash('success',space.name + ' created successfully');
         return res.redirect('/space/MySpaces');
     });
 }
@@ -112,6 +113,7 @@ module.exports.addQuestion = async function(req,res){
     });
     space.questions.push(question_obj);
     space.save();
+    req.flash('success','Question created successfully');
     return res.redirect('/space/spaceDetails/?space_id='+req.body.space_id);
 }
 
