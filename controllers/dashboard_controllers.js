@@ -71,11 +71,13 @@ module.exports.MyDashboard = async function(req,res){
                 });
             }
             else{
+                req.flash('success','Select interested topics');
                 return res.redirect('/dashboard/SelectTopics');
             }
         }
         else{
             sendEmail.sendEmail(req.user);
+            req.flash('success','Verify your email');
             return res.redirect('/user/verifyEmail');
         }
     }

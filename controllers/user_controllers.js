@@ -1,5 +1,6 @@
 const User = require("../models/user");
 const Otp = require('../models/otp');
+const validateSignup = require('../Other_Functions/Helping_Functions/validations/validateSignup');
 
 module.exports.login = function(req,res){
     if(req.isAuthenticated()){
@@ -20,6 +21,12 @@ module.exports.signup_form = function(req,res){
 }
 
 module.exports.register = async function(req,res){
+
+    let users = await User.find({email:req.body.email});
+    var is_valid = validateSignup.validateSignup(req,res,users);
+    if(! is_valid){
+        return res.redirect('back');
+    }
     try{
         var user = await User.create({
             fname : req.body.fname,
@@ -35,6 +42,7 @@ module.exports.register = async function(req,res){
             user : user._id,
             otp : '0'
         });
+        req.flash('success',user.fname + ' '+user.lname + ' registered successfully');
         return res.redirect('/');
     }
     catch(err){
@@ -73,11 +81,10 @@ module.exports.validateOtp = async function(req,res){
         let otp_obj = await Otp.findOne({user:req.user.id});
         otp_obj.otp = '0';
         otp_obj.save();
-
         return res.redirect('/dashboard');
     }
     else{
-        console.log("Wrong OTP");
+        req.flash('error','Wrong OTP');
         return res.redirect('back');
     }
 }

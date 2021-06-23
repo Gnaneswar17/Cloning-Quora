@@ -1,0 +1,19 @@
+<script>
+    <% if(flash.success && flash.success.length>0){ %>
+        new Noty({
+        theme : 'relax',
+        text : '<%= flash.success  %>',
+        timeout : 3000,
+        type : 'success'
+    }).show();
+    <% } %>
+
+    <% if(flash.error && flash.error.length>0){ %>
+        new Noty({
+        theme : 'relax',
+        text : '<%= flash.error  %>',
+        timeout : 3000,
+        type : 'error'
+    }).show();
+    <% } %>
+</script>
