@@ -1,7 +1,35 @@
-<form action="/user/create-session" method="POST">
-    <label for="email">Email :</label>
-    <input name= "email"type="email" required placeholder="Enter your Email"><br><br>
-    <label for="password">Password :</label>
-    <input name= "password" type="password" required placeholder="Enter your Password"><br><br>
-    <button>Login</button>
-</form>
+<div class="body-login">
+
+
+    <form action="/user/create-session" method="POST">
+        <div class="container">
+            <div class="login-form">
+        
+                <h2 class="title">Login</h2>
+    <div class="input-field">
+        <label for="email"></label>
+        <input name= "email" type="email" required placeholder="Enter your Email" id="email">
+    </div>
+    <div class="input-field"> 
+        <label for="password"></label>
+        <input name= "password" type="password" required placeholder="Enter your Password" id= "pass">
+    
+    </div>
+    <div class="input">
+        <div>
+          <input type="checkbox" name="" id="remember">
+          <label for="remember">Keep me signed in? </label>
+        </div>
+        <a href="#">forgot your password?</a>
+    </div>
+    
+         <button class="btn login">Login</button>
+    
+    
+    </div> 
+    
+    </div>
+    </form>
+    
+    </div>
+         

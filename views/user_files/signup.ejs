@@ -1,28 +1,57 @@
-<form action="/user/register" method="POST">
-    <label for="fname">First Name :</label>
-    <input name= "fname" type="text" required placeholder="Enter your First Name"><br><br>
+<div class="body-login">
+   
 
-    <label for="lname">Last Name :</label>
-    <input name= "lname" type="text" required placeholder="Enter your Last Name"><br><br>
-
-    <label for="DOB">DOB :</label>
-    <input name= "DOB" type="date" required placeholder="Enter your Name"><br><br>
-
-    <label for="gender">Gender :</label>
-    <input type="radio" id="male" name="gender" value="male" required>
-    <label for="male">Male</label>
-    <input type="radio" id="female" name="gender" value="female">
-    <label for="female">Female</label><br><br>
-  
-
-    <label for="email">Email :</label>
-    <input name= "email"type="email" required placeholder="Enter your Email"><br><br>
-
-    <label for="password">Password :</label>
-    <input name= "password" type="password" required placeholder="Enter your Password" id='signup_password'><br><br>
-
-    <label for="confirm-password">Confirm Password :</label>
-    <input name= "confirm-password" type="password" required placeholder="Re-Enter your Password" id='signup_cp'><br><br>
-
-    <button>Register</button>
-</form>
+    <form action="/user/register" method="POST">
+    
+        <div class="container">
+            <div class="login-form">
+    
+                <h2 class="title">Sign Up</h2>
+        
+        <div class="input-field">
+        <label for="fname"></label>
+        <input name= "fname" type="text" required placeholder="Enter your First Name">
+    </div>
+    <div class="input-field">
+        <label for="lname"></label>
+        <input name= "lname" type="text" required placeholder="Enter your Last Name">
+    </div>
+    
+            <div class="fieldgroup">
+        <label for="DOB">DOB :</label>
+        <input name= "DOB" type="date" required placeholder="DD/MM/YYYY">
+    </div>
+    
+        <div class="fieldgroup">
+        <label for="gender" class="radio-inline">Gender :</label>
+        <input class="radio" type="radio" id="male" name="gender" value="male" required>
+        
+        <label for="male" class="radio-inline">Male</label>
+        <input class="radio" type="radio" id="female" name="gender" value="female">
+       
+            <label for="female">Female</label>
+    
+    </div>
+    
+            <div class="input-field">
+        <label for="email"></label>
+        <input name= "email"type="email" required placeholder="Enter your Email">
+            </div>
+        <div class="input-field">
+        <label for="password"></label>
+        <input name= "password" type="password" required placeholder="Enter your Password" id='signup_password'>
+      </div>
+        <div class="input-field">
+        <label for="confirm-password"></label>
+        <input name= "confirm-password" type="password" required placeholder="Re-Enter your Password" id='signup_cp'>
+        </div>
+        <button class="btn login">Register</button>
+    
+    </div> 
+        
+    </div>
+    
+    </form>
+    
+    </div>
+    

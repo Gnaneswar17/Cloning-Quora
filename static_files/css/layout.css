@@ -1,2 +1,142 @@
-body {
-  background-color: lightblue; }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box'
+}
+body{
+  overflow-y: hidden;
+}
+
+.body-login{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  font-family: 'Poppins', sans-serif;
+  background:#FAF2EA;
+}
+
+a{
+  text-decoration:none;
+  text-transform:capitalize;
+  color:#9D6C1B;
+  font-size:.8rem;
+}
+a:hover,a:focus {
+  color:#DB9314;
+}
+.container{
+  margin:0;
+  padding:0;
+}
+.login-form{
+  width:350px;
+  background:#141414;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:1rem;
+  padding:3rem;
+  box-shadow:2px 7px 8px rgba(0,0,0,.3);
+  border-radius:3px;
+  color:#AAA9A7;
+  text-align:center;
+}
+.title{
+  margin-bottom:1rem;
+}
+.input-field {
+  width:100%;
+  padding:0;
+  margin:0;
+}
+.input-field input {
+  width:100%;
+  background:transparent;
+  border:none;
+  outline:none;
+  color: #7C848C;
+  border-bottom:1px solid #9D6C1B;
+  padding:.8rem;
+}
+.input-field input:focus {
+  border-color: #DB9314;
+}
+
+.input {
+  display:flex;
+  justify-content:space-between;
+  font-size:.9rem;
+}
+input[type="checkbox"]{
+  background:transparent;
+  padding:1rem;
+}
+
+.btn {
+  padding:.7rem;
+  border:none;
+  border-radius:3px;
+  font-size:1rem;
+  font-weight:bold;
+  outline:none;
+  cursor:pointer;
+  text-transform:capitalize;
+  transition:.2s ease-in-out;
+  filter:brightness(1);
+}
+.login {
+  background:#DB9314;
+}
+
+.btn:hover {
+  filter: brightness(.8);
+  box-shadow: 2px 5px 8px rgba(0,0,0,.2);
+/*   color:#ccc; */
+}
+
+@media screen and (max-width:500px){
+  .login-form{
+    width:calc(70% - 1rem);
+    margin:1rem;
+  }
+ 
+}
+@media screen and (max-width:350px){
+  .login-form{
+    width:calc(60% - 1rem);
+    margin:1rem;
+  }
+ 
+}
+
+fieldset {
+  overflow: hidden;
+
+}
+
+.fieldgroup{
+  display: flex;
+  padding: 10px 0 10px 0;
+}
+.radio-inline {
+  float: left;
+  clear: none;
+  margin-right: 1em;
+ 
+}
+
+label {
+  float: left;
+  clear: none;
+  display: flex;
+  padding: 0px 1em 0px 8px;
+  
+}
+
+input[type=radio],
+input.radio {
+  float: left;
+  clear: none;
+  margin: 2px 0 0 2px;
+}

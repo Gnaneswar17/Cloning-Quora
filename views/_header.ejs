@@ -1,25 +1,102 @@
-<header>
-    <u>
+<header class="site-header">
+
+    <div class="logo">
+
         <b>Clone Quora</b> 
-    </u>|
+
+    </div>
+
+    <nav class="topnav"> 
     <% if(locals.user){ %>
         <%= locals.user.fname + locals.user.lname %>|
         <% if(locals.user.is_verified=="true" && locals.user.is_selected=='true'){ %>
-            <a href="/dashboard">Home</a> |
-            <a href="/dashboard/profile">My Profile</a> |
-            <a href="/question/questionForm">Add Question</a> |
-            <form style="float: right;" action="/search/searchQuestions" method="POST">
+          <a href="/dashboard">Home</a> 
+           <a href="/dashboard/profile">My Profile</a>  
+      <a href="/question/questionForm">Add Question</a> 
+ <form style="float: right;" action="/search/searchQuestions" method="POST">
                 <input type="text" name="search" placeholder="search" size="35">
                 <button><i class="fa fa-search"></i></button>
             </form>
         <% } %>
-        <% if(locals.user && locals.user.email =="bhargavponduri@gmail.com"){%>
-            <a href="/admin/topicForm">Add Topic</a> |
+        <% if(locals.user && locals.user.email =="bhargavponduri@gmail.com" || locals.user && locals.user.email =="jvs75869@gmail.com" ){%>
+         <a href="/admin/topicForm">Add Topic</a> 
         <%}%>
-        <a href="/user/signout">Sign Out</a> |
+    <a  href="/user/signout">Sign Out</a> 
     <% }
     else{ %>
-        <a href="/user/signup">SignUp</a>
-        <a href="/">Login</a>
+       <a  class="hdrbtn" href="/user/signup">Sign Up</a>
+        <a class="hdrbtn" href="/">Login</a>
     <%}%>
+</nav>
+
 </header>
+
+<style>
+
+
+.logo {
+    
+  text-align: center;
+  margin: 10px;
+  padding: 15px;
+  font-size: 25px;
+  color: aliceblue;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+
+.hdrbtn{
+    padding: 10px 15px;
+    margin: 5px 10px;
+    font-size: 17px;
+}
+a {
+	text-decoration: none;
+	opacity: 0.75;
+	color: #fff;
+}
+
+a:hover {
+	opacity: 1;
+}
+
+a.btn {
+	border-radius: 4px;
+	text-transform: uppercase;
+	font-weight: bold;
+	text-align: center;
+	background-color: #1B98E0;
+	opacity: 1;
+}
+
+a.btn:hover {
+	opacity: 0.75;
+}
+
+   
+    header{
+        box-sizing: border-box;
+        position:relative;
+        width: 100%;
+        background-color: rgb(2, 41, 41);
+        
+        color: rgb(0, 0, 0);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    header nav {
+	display: flex;
+	
+}
+
+header nav li {
+	margin: 0 15px;
+}
+
+
+      
+</style>
+
